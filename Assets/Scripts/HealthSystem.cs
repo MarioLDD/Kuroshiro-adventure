@@ -2,17 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthSystem : MonoBehaviour
+public class HealthSystem : MonoBehaviour, IHealthSystem
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private int maxHealth;
+    private int currentHealth;
 
-    // Update is called once per frame
-    void Update()
+
+
+    public void TakeDamage(int damage)
     {
-        
+        currentHealth -= damage;
+        if (currentHealth < 0)
+        {
+            //activo particulas de muerte enemigo
+            //sumo puntos al score
+            Destroy(gameObject);
+        }        
     }
 }

@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+     protected Transform player;
+    [SerializeField] private float speed = 1f;
+    [SerializeField] protected float distanceDetection = 5f;
+
+
+    protected virtual void Move(){}
+
+    private void OnDrawGizmosSelected()
     {
-        
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(gameObject.transform.position, distanceDetection);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
