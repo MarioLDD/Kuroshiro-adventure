@@ -36,16 +36,17 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void Attack1()
+    private void Attack()
     {
 
     }
 
+    /*
     private void Attack2()
     {
 
     }
-
+    */
 
 
 
