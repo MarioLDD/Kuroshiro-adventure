@@ -8,6 +8,7 @@ public class Enemy_Ranged : Enemy
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        enemyAnim = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame

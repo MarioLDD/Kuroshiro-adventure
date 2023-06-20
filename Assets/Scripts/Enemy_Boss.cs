@@ -4,15 +4,24 @@ using UnityEngine;
 
 public class Enemy_Boss : Enemy
 {
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
+        player = GameObject.FindGameObjectWithTag("Player");
+        enemyAnim = GetComponentInChildren<Animator>();
+
+    }
+    private void Update()
+    {
+        Move();
+    }
+    protected override void Move()
+    {
+        base.Move();
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override void Attack()
     {
-        
+        base.Attack();
+        //analizar que quiero que haga
     }
 }

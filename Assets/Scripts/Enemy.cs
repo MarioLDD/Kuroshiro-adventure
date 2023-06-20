@@ -6,26 +6,47 @@ using UnityEngine.SocialPlatforms.Impl;
 public class Enemy : MonoBehaviour
 {
     protected GameObject player;
+    protected Animator enemyAnim;
+
 
     [SerializeField] protected float speed = 1f;
     //points, puntaje para pasar al score acumulado
-
+    [Tooltip("Green")]
     [SerializeField] protected float distanceDetection = 5f;//poner referencia en el inspector para saber que color le corresponde a cada radio
+
+    [Tooltip("Gray")]
     [SerializeField] protected float distanceStop = 0f;
+
+    [Tooltip("Red")]
     [SerializeField] protected float distanceAttack = 0f;
-    
 
     protected virtual void Move()
     {
         Vector2 moveDirection = player.transform.position - gameObject.transform.position;
-        float angle = Vector2.SignedAngle(Vector2.right, moveDirection);
+        moveDirection = moveDirection.normalized;
+
         float distanceToPlayer = Vector2.Distance(player.transform.position, gameObject.transform.position);
 
-        if (distanceToPlayer < distanceDetection && distanceToPlayer > distanceStop)
+        if (distanceToPlayer < distanceDetection)
         {
-            transform.eulerAngles = new Vector3(0, 0, angle);
-            transform.position = Vector2.MoveTowards(gameObject.transform.position, player.transform.position, speed * Time.deltaTime);
+            enemyAnim.SetFloat("MovimientoX", moveDirection.x);
+            enemyAnim.SetFloat("MovimientoY", moveDirection.y);
+            if (distanceToPlayer > distanceStop)
+            {
+                enemyAnim.SetBool("IsMoving", true);
+
+                transform.position = Vector2.MoveTowards(gameObject.transform.position, player.transform.position, speed * Time.deltaTime);
+            }
+            else
+            {
+                enemyAnim.SetBool("IsMoving", false);
+            }
         }
+        else
+        {
+            enemyAnim.SetBool("IsMoving", false);
+        }
+
     }
 
     protected virtual void Attack()
@@ -38,7 +59,7 @@ public class Enemy : MonoBehaviour
         //le paso el puntaje al GameManager, activo Animacion o efecto de muerte y destruyo el gameobject
         //tambien considerar usar el sistema de vida aqui para no tener que estar llamando atantos script
     }
-    protected virtual void OnDrawGizmosSelected()
+    protected virtual void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(gameObject.transform.position, distanceDetection);

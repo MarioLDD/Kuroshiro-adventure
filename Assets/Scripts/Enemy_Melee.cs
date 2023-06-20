@@ -7,6 +7,8 @@ public class Enemy_Melee : Enemy
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        enemyAnim = GetComponentInChildren<Animator>();
+
     }
     private void Update()
     {
