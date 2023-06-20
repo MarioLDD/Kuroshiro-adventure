@@ -94,8 +94,8 @@ public class PlayerController : MonoBehaviour
     {
         playerAnim.SetTrigger("Attack");
 
-        weapon.transform.localPosition = Vector2.up * 0.01f;
-        yield return new WaitForSeconds(0.02f);
+        weapon.transform.localPosition = Vector2.up * 0.02f;
+        yield return new WaitForSeconds(0.21f);
         //yield return null;
 
         weapon.transform.localPosition = Vector2.zero;
