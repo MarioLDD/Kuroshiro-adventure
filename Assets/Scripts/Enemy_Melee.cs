@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_Melee : Enemy
+public class Enemy_Melee : Enem
 {
     private void Start()
     {

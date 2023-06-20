@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 
-public class Enemy : MonoBehaviour
+public class Enem : MonoBehaviour
 {
     protected GameObject player;
     protected Animator enemyAnim;
@@ -12,13 +12,13 @@ public class Enemy : MonoBehaviour
     [SerializeField] protected float speed = 1f;
     //points, puntaje para pasar al score acumulado
     [Tooltip("Green")]
-    [SerializeField] protected float distanceDetection = 5f;//poner referencia en el inspector para saber que color le corresponde a cada radio
+    [SerializeField] protected float distanceDetection = 5f;
 
     [Tooltip("Gray")]
-    [SerializeField] protected float distanceStop = 0f;
+    [SerializeField] protected float distanceStop = 1f;
 
     [Tooltip("Red")]
-    [SerializeField] protected float distanceAttack = 0f;
+    [SerializeField] protected float distanceAttack = 1f;
 
     protected virtual void Move()
     {
