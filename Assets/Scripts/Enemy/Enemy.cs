@@ -3,22 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 
-public class Enem : MonoBehaviour
+[RequireComponent(typeof(HealthSystem))]
+[RequireComponent(typeof(SpriteRenderer))]
+[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(BoxCollider2D))]
+
+
+public class Enemy : MonoBehaviour
 {
     protected GameObject player;
     protected Animator enemyAnim;
 
+    [SerializeField] protected EnemyConfig enemyConfig;
 
-    [SerializeField] protected float speed = 1f;
-    //points, puntaje para pasar al score acumulado
-    [Tooltip("Green")]
-    [SerializeField] protected float distanceDetection = 5f;
+    [SerializeField] protected float speed;
+    [SerializeField] protected int points;
+    [Tooltip("Green circle")]
+    [SerializeField] protected float distanceDetection;
 
-    [Tooltip("Gray")]
-    [SerializeField] protected float distanceStop = 1f;
+    [Tooltip("Gray circle")]
+    [SerializeField] protected float distanceStop;
 
-    [Tooltip("Red")]
-    [SerializeField] protected float distanceAttack = 1f;
+    [Tooltip("Red circle")]
+    [SerializeField] protected float distanceAttack;
+    protected HealthSystem healthSystem;
 
     protected virtual void Move()
     {
@@ -54,10 +62,11 @@ public class Enem : MonoBehaviour
 
     }
 
-    protected virtual void Dead()
+    public virtual void Dead()
     {
+        Debug.Log("muerte de " + gameObject.name);
+
         //le paso el puntaje al GameManager, activo Animacion o efecto de muerte y destruyo el gameobject
-        //tambien considerar usar el sistema de vida aqui para no tener que estar llamando atantos script
     }
     protected virtual void OnDrawGizmos()
     {

@@ -1,22 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class HealthSystem : MonoBehaviour, IHealthSystem
 {
-    [SerializeField] private int maxHealth;
+    private int maxHealth;
+    public UnityEvent onHealthZero;
     private int currentHealth;
 
-
+    public int MaxHealth { get { return maxHealth; } set { maxHealth = value; } } 
 
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
         if (currentHealth < 0)
         {
-            //activo particulas de muerte enemigo
-            //sumo puntos al score
-            Destroy(gameObject);
+           onHealthZero.Invoke();
         }        
     }
 }

@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
+
+[RequireComponent(typeof(HealthSystem))]
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D playerRb;
     private Animator playerAnim;
+    [SerializeField] private int health;
     [SerializeField] private float speed = 5;
     [SerializeField] private Transform hand;
     [SerializeField] private Vector2 handPositionFront;
@@ -17,12 +20,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float radiointeraccion;
     [SerializeField] private LayerMask interactuableLayer;
     private Vector2 movement;
+    private HealthSystem healthSystem;
 
     [SerializeField] private GameObject weapon;
     void Start()
     {
         playerRb = GetComponent<Rigidbody2D>();
         playerAnim = GetComponent<Animator>();
+        healthSystem = GetComponent<HealthSystem>();
+        healthSystem.MaxHealth = health;
         weapon.SetActive(false);
 
     }
