@@ -9,15 +9,22 @@ public class PlayerController : MonoBehaviour
     private Animator playerAnim;
     [SerializeField] private float speed = 5;
     [SerializeField] private Transform hand;
+    [SerializeField] private Vector2 handPositionFront;
+    [SerializeField] private Vector2 handPositionBack;
+    [SerializeField] private Vector2 handPositionLeft;
+    [SerializeField] private Vector2 handPositionRight;
+    [SerializeField] private float offSetAttack;
     [SerializeField] private float radiointeraccion;
     [SerializeField] private LayerMask interactuableLayer;
     private Vector2 movement;
 
-    public GameObject weapon;
+    [SerializeField] private GameObject weapon;
     void Start()
     {
         playerRb = GetComponent<Rigidbody2D>();
         playerAnim = GetComponent<Animator>();
+        weapon.SetActive(false);
+
     }
 
     void Update()
@@ -38,22 +45,22 @@ public class PlayerController : MonoBehaviour
 
         if (movement.y < 0) //Front Position
         {
-            hand.localPosition = new Vector2(-0.02f, -0.08f);
+            hand.localPosition = handPositionFront;
             hand.rotation = Quaternion.Euler(0, 0, 180);
         }
         if (movement.y > 0) //Back Position
         {
-            hand.localPosition = new Vector2(-0.03f, 0.08f);
+            hand.localPosition = handPositionBack;
             hand.rotation = Quaternion.Euler(0, 0, 0);
         }
         if (movement.x > 0) //Right Position
         {
-            hand.localPosition = new Vector2(0.08f, -0.04f);
+            hand.localPosition = handPositionRight;
             hand.rotation = Quaternion.Euler(0, 0, 270);
         }
         if (movement.x < 0) //Left Position
         {
-            hand.localPosition = new Vector2(-0.08f, -0.04f);
+            hand.localPosition = handPositionLeft;
             hand.rotation = Quaternion.Euler(0, 0, 90);
         }
 
@@ -93,12 +100,15 @@ public class PlayerController : MonoBehaviour
     private IEnumerator Attack()
     {
         playerAnim.SetTrigger("Attack");
+        weapon.SetActive(true);
 
-        weapon.transform.localPosition = Vector2.up * 0.02f;
+        weapon.transform.localPosition = Vector2.up * offSetAttack;
         yield return new WaitForSeconds(0.21f);
         //yield return null;
 
         weapon.transform.localPosition = Vector2.zero;
+        weapon.SetActive(false);
+
     }
 
 
