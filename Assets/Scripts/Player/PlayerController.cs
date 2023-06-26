@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
@@ -16,20 +17,31 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Vector2 handPositionBack;
     [SerializeField] private Vector2 handPositionLeft;
     [SerializeField] private Vector2 handPositionRight;
+    [SerializeField] private Vector2 handPositionFrontR;
+    [SerializeField] private Vector2 handPositionFrontL;
+    [SerializeField] private Vector2 handPositionBackR;
+    [SerializeField] private Vector2 handPositionBackL;
     [SerializeField] private float offSetAttack;
     [SerializeField] private float radiointeraccion;
     [SerializeField] private LayerMask interactuableLayer;
     private Vector2 movement;
     private HealthSystem healthSystem;
 
-    [SerializeField] private GameObject weapon;
+    [SerializeField] private Weapon weapon;
     void Start()
     {
         playerRb = GetComponent<Rigidbody2D>();
         playerAnim = GetComponent<Animator>();
         healthSystem = GetComponent<HealthSystem>();
         healthSystem.MaxHealth = health;
-        weapon.SetActive(false);
+        if (GetComponentInChildren<Weapon>() != null)
+        {
+            weapon = GetComponentInChildren<Weapon>();
+
+            weapon.gameObject.SetActive(false);
+        }
+
+
 
     }
 
@@ -51,20 +63,46 @@ public class PlayerController : MonoBehaviour
 
         if (movement.y < 0) //Front Position
         {
-            hand.localPosition = handPositionFront;
-            hand.rotation = Quaternion.Euler(0, 0, 180);
+            if (movement.x > 0)
+            {
+                hand.localPosition = handPositionFrontR;
+                hand.rotation = Quaternion.Euler(0, 0, 225);
+            }
+            else if (movement.x < 0)
+            {
+                hand.localPosition = handPositionFrontL;
+                hand.rotation = Quaternion.Euler(0, 0, 135);
+            }
+            else
+            {
+                hand.localPosition = handPositionFront;
+                hand.rotation = Quaternion.Euler(0, 0, 180);
+            }
         }
-        if (movement.y > 0) //Back Position
+        else if (movement.y > 0) //Back Position
         {
-            hand.localPosition = handPositionBack;
-            hand.rotation = Quaternion.Euler(0, 0, 0);
+            if (movement.x > 0)
+            {
+                hand.localPosition = handPositionBackR;
+                hand.rotation = Quaternion.Euler(0, 0, 315);
+            }
+            else if (movement.x < 0)
+            {
+                hand.localPosition = handPositionBackL;
+                hand.rotation = Quaternion.Euler(0, 0, 45);
+            }
+            else
+            {
+                hand.localPosition = handPositionBack;
+                hand.rotation = Quaternion.Euler(0, 0, 0);
+            }
         }
-        if (movement.x > 0) //Right Position
+        else if (movement.x > 0) //Right Position
         {
             hand.localPosition = handPositionRight;
             hand.rotation = Quaternion.Euler(0, 0, 270);
         }
-        if (movement.x < 0) //Left Position
+        else if (movement.x < 0) //Left Position
         {
             hand.localPosition = handPositionLeft;
             hand.rotation = Quaternion.Euler(0, 0, 90);
@@ -106,15 +144,15 @@ public class PlayerController : MonoBehaviour
     private IEnumerator Attack()
     {
         playerAnim.SetTrigger("Attack");
-        weapon.SetActive(true);
-
-        weapon.transform.localPosition = Vector2.up * offSetAttack;
-        yield return new WaitForSeconds(0.21f);
-        //yield return null;
-
-        weapon.transform.localPosition = Vector2.zero;
-        weapon.SetActive(false);
-
+        if (weapon != null)
+        {
+            weapon.gameObject.SetActive(true);
+            weapon.Attack();
+            //weapon.transform.localPosition = Vector2.up * offSetAttack;
+            yield return new WaitForSeconds(0.15f);
+            //weapon.transform.localPosition = Vector2.zero;
+            weapon.gameObject.SetActive(false);
+        }
     }
 
 

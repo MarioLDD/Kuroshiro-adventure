@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: -5928174269856998110}
   - component: {fileID: 143148912017328894}
   - component: {fileID: 4037555885181726404}
-  - component: {fileID: 5776452871290633168}
   m_Layer: 0
   m_Name: BigShuriken
   m_TagString: Untagged
@@ -146,16 +145,3 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.23958333
---- !u!114 &5776452871290633168
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 143148912017328833}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2583a8a261ca0b439d8c38748a17ed4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 0

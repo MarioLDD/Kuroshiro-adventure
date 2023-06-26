@@ -1,19 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
 
-//[RequireComponent (typeof (BoxCollider2D))]
+
 public class Weapon : MonoBehaviour
 {
-    [SerializeField] private int damage;
+    [SerializeField] protected WeaponConfig weaponConfig;
 
-    private void Start()
+
+    [SerializeField] protected int damage;
+    [SerializeField] protected float attackRate;
+    [Header ("Only for range weapons")]
+    [SerializeField] protected float range;
+    [SerializeField] protected int startAmmo;
+    [SerializeField] protected int proyectileForce;
+    [SerializeField] protected Rigidbody2D proyectile;
+    public virtual void Attack()
     {
-        
+
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.GetComponent<IHealthSystem>() != null)
+        if (collision.gameObject.GetComponent<IHealthSystem>() != null)
         {
             collision.gameObject.GetComponent<IHealthSystem>().TakeDamage(damage);
         }

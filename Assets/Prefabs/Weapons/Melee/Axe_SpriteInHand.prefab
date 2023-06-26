@@ -9,12 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4960255565344993330}
+  - component: {fileID: 4472402040474161929}
   - component: {fileID: 3790096711688671231}
-  - component: {fileID: 1352507244128660262}
   - component: {fileID: 5732470632258504210}
   m_Layer: 0
   m_Name: Axe_SpriteInHand
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34,6 +34,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4472402040474161929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7558578106206282920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5171e7931615ddb49a9c28e88dba9b70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponConfig: {fileID: 0}
+  damage: 0
+  attackRate: 0
+  range: 0
+  startAmmo: 0
+  proyectileForce: 0
+  proyectile: {fileID: 0}
 --- !u!212 &3790096711688671231
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -86,19 +105,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1352507244128660262
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7558578106206282920}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2583a8a261ca0b439d8c38748a17ed4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 0
 --- !u!70 &5732470632258504210
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: -4187606069986477673}
   - component: {fileID: 7182999711544942897}
   - component: {fileID: 7244862361075509197}
-  - component: {fileID: 6409748020162684054}
   m_Layer: 0
   m_Name: ShurikenMagic
   m_TagString: Untagged
@@ -146,16 +145,3 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.13541667
---- !u!114 &6409748020162684054
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7182999711544942896}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2583a8a261ca0b439d8c38748a17ed4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 0

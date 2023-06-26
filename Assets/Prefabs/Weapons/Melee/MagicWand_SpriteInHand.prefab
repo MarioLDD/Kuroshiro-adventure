@@ -9,12 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4905586623125093080}
+  - component: {fileID: -217398864708275657}
   - component: {fileID: 3828102540333114284}
   - component: {fileID: 1552093537499487498}
-  - component: {fileID: 7851453227291686701}
   m_Layer: 0
   m_Name: MagicWand_SpriteInHand
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34,6 +34,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-217398864708275657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7463737871096761735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5171e7931615ddb49a9c28e88dba9b70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponConfig: {fileID: 0}
+  damage: 0
+  attackRate: 0
+  range: 0
+  startAmmo: 0
+  proyectileForce: 0
+  proyectile: {fileID: 0}
 --- !u!212 &3828102540333114284
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -112,16 +131,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.3125, y: 0.625}
   m_EdgeRadius: 0
---- !u!114 &7851453227291686701
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7463737871096761735}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2583a8a261ca0b439d8c38748a17ed4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 0
