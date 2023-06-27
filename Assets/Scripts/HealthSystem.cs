@@ -11,6 +11,7 @@ public class HealthSystem : MonoBehaviour, IHealthSystem
 
     public int MaxHealth { get { return maxHealth; } set { maxHealth = value; } } 
 
+    public int CurrentHealth { get { return currentHealth; } }
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
