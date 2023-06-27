@@ -1,56 +1,76 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
-
 
 [RequireComponent(typeof(HealthSystem))]
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D playerRb;
     private Animator playerAnim;
-    [SerializeField] private int health;
-    [SerializeField] private float speed = 5;
-    [SerializeField] private Transform hand;
-    [SerializeField] private Vector2 handPositionFront;
-    [SerializeField] private Vector2 handPositionBack;
-    [SerializeField] private Vector2 handPositionLeft;
-    [SerializeField] private Vector2 handPositionRight;
-    [SerializeField] private Vector2 handPositionFrontR;
-    [SerializeField] private Vector2 handPositionFrontL;
-    [SerializeField] private Vector2 handPositionBackR;
-    [SerializeField] private Vector2 handPositionBackL;
-    [SerializeField] private float offSetAttack;
-    [SerializeField] private float radiointeraccion;
-    [SerializeField] private LayerMask interactuableLayer;
     private Vector2 movement;
     private HealthSystem healthSystem;
+    [SerializeField] private int health;
+    [SerializeField] private float speed = 5;
 
+    [Header("Current weapon")]
     [SerializeField] private Weapon weapon;
+
+    [Header("Hand setting")]
+    [SerializeField] private Transform hand;
+    [SerializeField] private float offSetAttack;
+    [SerializeField] private Vector2 handPositionFront;
+    [SerializeField] private Vector2 handPositionFrontL;
+    [SerializeField] private Vector2 handPositionLeft;
+    [SerializeField] private Vector2 handPositionBackL;
+    [SerializeField] private Vector2 handPositionBack;
+    [SerializeField] private Vector2 handPositionBackR;
+    [SerializeField] private Vector2 handPositionRight;
+    [SerializeField] private Vector2 handPositionFrontR;
+
+    [Header("Interaction")]
+    [SerializeField] private float radiointeraccion;
+    [SerializeField] private LayerMask interactuableLayer;
+
+
     void Start()
     {
         playerRb = GetComponent<Rigidbody2D>();
         playerAnim = GetComponent<Animator>();
         healthSystem = GetComponent<HealthSystem>();
         healthSystem.MaxHealth = health;
-        if (GetComponentInChildren<Weapon>() != null)
-        {
-            weapon = GetComponentInChildren<Weapon>();
+        UpdateWeapon();
+    }
 
-            weapon.gameObject.SetActive(false);
+    void Update()
+    {
+        InputTeclado();
+
+        Movement();
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Interactuar();
         }
 
 
 
     }
 
-    void Update()
+    private void InputTeclado()
     {
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
         movement = movement.normalized;
 
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            StartCoroutine(Attack());
+        }
+
+
+    }
+
+    private void Movement()
+    {
         playerAnim.SetFloat("MovimientoX", movement.x);
         playerAnim.SetFloat("MovimientoY", movement.y);
         playerAnim.SetFloat("Speed", movement.sqrMagnitude);
@@ -61,37 +81,37 @@ public class PlayerController : MonoBehaviour
             playerAnim.SetFloat("LastMovimientoY", movement.y);
         }
 
-        if (movement.y < 0) //Front Position
+        if (movement.y < 0)
         {
-            if (movement.x > 0)
+            if (movement.x > 0) //Front-Right Position
             {
                 hand.localPosition = handPositionFrontR;
                 hand.rotation = Quaternion.Euler(0, 0, 225);
             }
-            else if (movement.x < 0)
+            else if (movement.x < 0) //Front-Left Position
             {
                 hand.localPosition = handPositionFrontL;
                 hand.rotation = Quaternion.Euler(0, 0, 135);
             }
-            else
+            else //Front Position
             {
                 hand.localPosition = handPositionFront;
                 hand.rotation = Quaternion.Euler(0, 0, 180);
             }
         }
-        else if (movement.y > 0) //Back Position
+        else if (movement.y > 0)
         {
-            if (movement.x > 0)
+            if (movement.x > 0) //Back-Right Position
             {
                 hand.localPosition = handPositionBackR;
                 hand.rotation = Quaternion.Euler(0, 0, 315);
             }
-            else if (movement.x < 0)
+            else if (movement.x < 0) //Back-Left Position
             {
                 hand.localPosition = handPositionBackL;
                 hand.rotation = Quaternion.Euler(0, 0, 45);
             }
-            else
+            else //Back Position
             {
                 hand.localPosition = handPositionBack;
                 hand.rotation = Quaternion.Euler(0, 0, 0);
@@ -107,39 +127,12 @@ public class PlayerController : MonoBehaviour
             hand.localPosition = handPositionLeft;
             hand.rotation = Quaternion.Euler(0, 0, 90);
         }
-
-
-
-
-
-
-
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            StartCoroutine(Attack());
-        }
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            Interactuar();
-        }
-
-
-
-
     }
-
 
     private void FixedUpdate()
     {
         playerRb.MovePosition(playerRb.position + movement * speed * Time.fixedDeltaTime);
     }
-
-    /*private void Movement()
-    {
-
-    }*/
 
     private IEnumerator Attack()
     {
@@ -155,20 +148,27 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
     private void Interactuar()
     {
         Collider2D collider = Physics2D.OverlapCircle(transform.position, radiointeraccion, interactuableLayer);
         if (collider != null)
         {
-            collider.gameObject.GetComponent<Iinteractuable>();//completar con la accion
+            collider.gameObject.GetComponent<Iinteractuable>().Interaction();//completar con la accion
         }
     }
-
 
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, radiointeraccion);
+    }
+    public void UpdateWeapon()
+    {
+        if (GetComponentInChildren<Weapon>() != null)
+        {
+            weapon = GetComponentInChildren<Weapon>();
+
+            weapon.gameObject.SetActive(false);
+        }
     }
 }
