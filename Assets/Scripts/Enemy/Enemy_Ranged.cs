@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Enemy_Ranged : Enemy
 {
-
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -22,10 +21,6 @@ public class Enemy_Ranged : Enemy
     void Update()
     {
         Move();
-    }
-    protected override void Move()
-    {
-        base.Move();
     }
     protected override void Attack()
     {

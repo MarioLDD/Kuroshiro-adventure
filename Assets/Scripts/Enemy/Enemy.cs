@@ -1,14 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
 
 [RequireComponent(typeof(HealthSystem))]
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(BoxCollider2D))]
-
-
 public class Enemy : MonoBehaviour
 {
     protected GameObject player;
@@ -54,13 +51,9 @@ public class Enemy : MonoBehaviour
         {
             enemyAnim.SetBool("IsMoving", false);
         }
-
     }
 
-    protected virtual void Attack()
-    {
-
-    }
+    protected virtual void Attack() { }
 
     public virtual void Dead()
     {

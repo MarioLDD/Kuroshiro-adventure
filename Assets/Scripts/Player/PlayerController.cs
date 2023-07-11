@@ -50,9 +50,6 @@ public class PlayerController : MonoBehaviour
         {
             Interactuar();
         }
-
-
-
     }
 
     private void InputTeclado()
@@ -65,8 +62,6 @@ public class PlayerController : MonoBehaviour
         {
             StartCoroutine(Attack());
         }
-
-
     }
 
     private void Movement()
@@ -172,3 +167,4 @@ public class PlayerController : MonoBehaviour
         }
     }
 }
+
