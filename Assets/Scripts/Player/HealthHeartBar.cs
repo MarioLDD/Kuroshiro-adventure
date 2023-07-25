@@ -8,11 +8,12 @@ public class HealthHeartBar : MonoBehaviour
     private HealthSystem healthSystem;
     List<HealthHeart> hearts = new List<HealthHeart>();
 
-
+    private void Awake()
+    {
+        healthSystem = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthSystem>();
+    }
     private void Start()
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        healthSystem = player.GetComponent<HealthSystem>();
         DrawHearts();
     }
     public void DrawHearts()
@@ -30,7 +31,7 @@ public class HealthHeartBar : MonoBehaviour
         {
             int heartStausRemainder = (int)Mathf.Clamp(healthSystem.CurrentHealth - (i * 4), 0, 4);
             hearts[i].SetHeartImage((HeartStatus)heartStausRemainder);
-        
+
         }
     }
     public void CreateEmptyHeart()
@@ -50,10 +51,4 @@ public class HealthHeartBar : MonoBehaviour
         }
         hearts = new List<HealthHeart>();
     }
-
-
-
-
-
-
 }

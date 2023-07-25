@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class Enemy_Melee : Enemy
 {
-    private void Start()
+    private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         enemyAnim = GetComponent<Animator>();
         healthSystem = GetComponent<HealthSystem>();
+    }
+    private void Start()
+    {
         healthSystem.MaxHealth = enemyConfig.Health;
         points = enemyConfig.Points;
         speed = enemyConfig.Speed;
@@ -20,15 +23,15 @@ public class Enemy_Melee : Enemy
     {
         Move();
     }
-   
+
 
     protected override void Attack()
     {
-               //activo animacion ataque, el que va a generar daño es el collider del arma
+        //activo animacion ataque, el que va a generar daño es el collider del arma
     }
 
     public override void Dead()
     {
-        
+
     }
 }

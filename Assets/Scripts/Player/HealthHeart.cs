@@ -8,7 +8,7 @@ public class HealthHeart : MonoBehaviour
     [SerializeField] private Sprite fullHeart, threeQuartersHeart, halfHeart, quarterHeart, emptyHeart;
     private Image heartImage;
 
-    void Start()
+    void Awake()
     {
         heartImage = GetComponent<Image>();
     }

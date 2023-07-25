@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class Enemy_Boss : Enemy
 {
-    private void Start()
+    private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         enemyAnim = GetComponentInChildren<Animator>();
+    }
+    private void Start()
+    {
 
     }
     private void Update()

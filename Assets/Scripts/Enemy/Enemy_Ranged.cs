@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class Enemy_Ranged : Enemy
 {
-    void Start()
+    void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         enemyAnim = GetComponentInChildren<Animator>();
         healthSystem = GetComponent<HealthSystem>();
+    }
+    void Start()
+    {
+
         healthSystem.MaxHealth = enemyConfig.Health;
         points = enemyConfig.Points;
         speed = enemyConfig.Speed;
