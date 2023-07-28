@@ -29,14 +29,17 @@ public class PlayerController : MonoBehaviour
     [Header("Interaction")]
     [SerializeField] private float radiointeraccion;
     [SerializeField] private LayerMask interactuableLayer;
-
-
-    void Start()
+    private void Awake()
     {
         playerRb = GetComponent<Rigidbody2D>();
         playerAnim = GetComponent<Animator>();
         healthSystem = GetComponent<HealthSystem>();
         healthSystem.MaxHealth = health;
+    }
+
+    void Start()
+    {
+        
         UpdateWeapon();
     }
 
@@ -50,9 +53,6 @@ public class PlayerController : MonoBehaviour
         {
             Interactuar();
         }
-
-
-
     }
 
     private void InputTeclado()
@@ -65,8 +65,6 @@ public class PlayerController : MonoBehaviour
         {
             StartCoroutine(Attack());
         }
-
-
     }
 
     private void Movement()
@@ -172,3 +170,4 @@ public class PlayerController : MonoBehaviour
         }
     }
 }
+

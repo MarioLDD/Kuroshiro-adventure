@@ -1,15 +1,12 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-
 public class Weapon : MonoBehaviour
 {
     [SerializeField] protected WeaponConfig weaponConfig;
-
-
     [SerializeField] protected int damage;
     [SerializeField] protected float attackRate;
-    [Header ("Only for range weapons")]
+    [Header("Only for range weapons")]
     [SerializeField] protected float range;
     [SerializeField] protected int startAmmo;
     [SerializeField] protected int proyectileForce;
