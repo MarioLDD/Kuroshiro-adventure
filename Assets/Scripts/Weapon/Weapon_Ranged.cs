@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Weapon_Ranged : Weapon
 {
+    [SerializeField] Transform firePoint;
     void Start()
     {
         damage = weaponConfig.Damage;
@@ -16,7 +17,11 @@ public class Weapon_Ranged : Weapon
     public override void Attack()
     {
         Rigidbody2D proyectileRb;
-        proyectileRb = Instantiate(proyectile, transform.position, transform.rotation);
+        proyectileRb = Instantiate(proyectile, firePoint.position, transform.rotation);
         proyectileRb.AddRelativeForce(Vector2.down * proyectileForce, ForceMode2D.Impulse);
+        Projectile projectile = proyectileRb.gameObject.GetComponent<Projectile>();
+        projectile.Projectile_Rb = proyectileRb;
+        projectile.Damage = damage;
+        projectile.Range = range;
     }
 }

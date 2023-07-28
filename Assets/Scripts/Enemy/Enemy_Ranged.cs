@@ -14,6 +14,9 @@ public class Enemy_Ranged : Enemy
     {
 
         healthSystem.MaxHealth = enemyConfig.Health;
+    }
+    void Start()
+    {
         points = enemyConfig.Points;
         speed = enemyConfig.Speed;
         distanceDetection = enemyConfig.DistanceDetection;

@@ -60,6 +60,7 @@ public class Enemy : MonoBehaviour
         Debug.Log("muerte de " + gameObject.name);
 
         //le paso el puntaje al GameManager, activo Animacion o efecto de muerte y destruyo el gameobject
+        Destroy(gameObject);
     }
     protected virtual void OnDrawGizmos()
     {

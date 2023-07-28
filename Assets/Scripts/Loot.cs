@@ -8,16 +8,18 @@ public class Loot : MonoBehaviour, Iinteractuable
     [SerializeField] private GameObject weaponPrefab;
     [SerializeField] private GameObject weapon;
     private SpriteRenderer weaponRenderer;
+    private PlayerController playerController;
 
     void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        weaponRenderer = weapon.GetComponent<SpriteRenderer>();
+        playerController = player.GetComponent<PlayerController>();
+        
     }
     void Start()
     {
-        weapon = Instantiate(weaponPrefab, transform.position, transform.rotation);
-        weapon.transform.SetParent(this.transform);
+        weapon = Instantiate(weaponPrefab, this.transform.position, this.transform.rotation, this.transform);
+        weaponRenderer = weapon.GetComponent<SpriteRenderer>();
         weaponRenderer.sortingOrder = 1;
         weapon.SetActive(false);
     }
@@ -26,12 +28,10 @@ public class Loot : MonoBehaviour, Iinteractuable
         weapon.SetActive(true);
         Transform weaponParent = player.transform.Find("Hand/Weapon");
         GameObject oldWeapon = weaponParent.GetChild(0).gameObject;
-        oldWeapon.SetActive(true);
-        oldWeapon.transform.SetParent(this.transform);
-        weapon.transform.SetParent(weaponParent.transform);
+        oldWeapon.transform.SetParent(this.transform, false);
+        weapon.transform.SetParent(weaponParent.transform, false);
         weapon = oldWeapon;
-        weapon.SetActive(false);
 
-        player.GetComponent<PlayerController>().UpdateWeapon();
+        playerController.UpdateWeapon();
     }
 }

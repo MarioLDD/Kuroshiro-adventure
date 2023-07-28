@@ -13,6 +13,9 @@ public class Enemy_Melee : Enemy
     private void Start()
     {
         healthSystem.MaxHealth = enemyConfig.Health;
+    }
+    private void Start()
+    {
         points = enemyConfig.Points;
         speed = enemyConfig.Speed;
         distanceDetection = enemyConfig.DistanceDetection;

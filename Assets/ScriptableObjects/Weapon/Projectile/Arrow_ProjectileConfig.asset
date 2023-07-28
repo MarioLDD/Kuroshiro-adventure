@@ -9,14 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a07c817bf236dc44a14ebfc00ea3f49, type: 3}
-  m_Name: RedNinja
+  m_Script: {fileID: 11500000, guid: 40992020a17fb6e44ba47279fdd564bf, type: 3}
+  m_Name: Arrow_ProjectileConfig
   m_EditorClassIdentifier: 
-  enemyName: 
-  health: 50
-  points: 5
-  speed: 1
-  weapon: {fileID: 0}
-  distanceDetection: 4
-  distanceStop: 1.5
-  distanceAttack: 2.5
+  damage: 0
+  range: 0
