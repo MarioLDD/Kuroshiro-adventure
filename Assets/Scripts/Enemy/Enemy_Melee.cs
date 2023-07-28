@@ -9,10 +9,10 @@ public class Enemy_Melee : Enemy
         player = GameObject.FindGameObjectWithTag("Player");
         enemyAnim = GetComponent<Animator>();
         healthSystem = GetComponent<HealthSystem>();
+        healthSystem.MaxHealth = enemyConfig.Health;
     }
     private void Start()
     {
-        healthSystem.MaxHealth = enemyConfig.Health;
         points = enemyConfig.Points;
         speed = enemyConfig.Speed;
         distanceDetection = enemyConfig.DistanceDetection;
@@ -32,6 +32,6 @@ public class Enemy_Melee : Enemy
 
     public override void Dead()
     {
-
+        base.Dead();
     }
 }

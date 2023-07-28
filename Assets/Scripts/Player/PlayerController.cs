@@ -38,8 +38,7 @@ public class PlayerController : MonoBehaviour
     }
 
     void Start()
-    {
-        
+    {        
         UpdateWeapon();
     }
 
@@ -47,12 +46,7 @@ public class PlayerController : MonoBehaviour
     {
         InputTeclado();
 
-        Movement();
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            Interactuar();
-        }
+        Movement();        
     }
 
     private void InputTeclado()
@@ -64,6 +58,11 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             StartCoroutine(Attack());
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Interactuar();
         }
     }
 
