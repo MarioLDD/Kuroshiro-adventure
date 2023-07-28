@@ -9,10 +9,6 @@ public class Enemy_Ranged : Enemy
         player = GameObject.FindGameObjectWithTag("Player");
         enemyAnim = GetComponentInChildren<Animator>();
         healthSystem = GetComponent<HealthSystem>();
-    }
-    void Start()
-    {
-
         healthSystem.MaxHealth = enemyConfig.Health;
     }
     void Start()

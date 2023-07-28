@@ -9,10 +9,8 @@ public class Enemy_Melee : Enemy
         player = GameObject.FindGameObjectWithTag("Player");
         enemyAnim = GetComponent<Animator>();
         healthSystem = GetComponent<HealthSystem>();
-    }
-    private void Start()
-    {
         healthSystem.MaxHealth = enemyConfig.Health;
+
     }
     private void Start()
     {
