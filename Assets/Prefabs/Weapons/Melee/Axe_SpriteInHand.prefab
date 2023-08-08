@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4472402040474161929}
   - component: {fileID: 3790096711688671231}
   - component: {fileID: 5732470632258504210}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Axe_SpriteInHand
   m_TagString: Weapon
   m_Icon: {fileID: 0}

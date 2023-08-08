@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2889388441765199308}
   - component: {fileID: 5523138134679450823}
   - component: {fileID: 6013110595573557205}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Bow
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: a01e85d950111e341af5915e100dde63, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -115,7 +115,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3332230196686753796}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}

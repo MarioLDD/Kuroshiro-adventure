@@ -17,18 +17,12 @@ public class Projectile : MonoBehaviour
     void Start()
     {
         float projectileVel = projectile_Rb.velocity.magnitude;
-        Debug.Log("range: " + range + " vel: " + projectileVel);
         float time = range / projectileVel;
-        Debug.Log("time: " + time); 
         Destroy(gameObject, time);
     }
     private void OnDisable()
     {
-        Debug.Log("chauuuuu");
-    }
-    void Update()
-    {
-       // Debug.Log(projectile_Rb.velocity);
+       //efecto de particulas
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

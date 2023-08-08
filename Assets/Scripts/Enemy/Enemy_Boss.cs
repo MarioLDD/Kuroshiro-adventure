@@ -22,9 +22,10 @@ public class Enemy_Boss : Enemy
         base.Move();
     }
 
-    protected override void Attack()
+    protected override IEnumerator Attack()
     {
         base.Attack();
+        yield return null;
         //analizar que quiero que haga
     }
 }

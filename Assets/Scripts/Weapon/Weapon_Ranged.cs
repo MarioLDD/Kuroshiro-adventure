@@ -4,7 +4,8 @@ using UnityEngine;
 public class Weapon_Ranged : Weapon
 {
     [SerializeField] Transform firePoint;
-    void Start()
+
+    void Awake()
     {
         damage = weaponConfig.Damage;
         attackRate = weaponConfig.AttackRate;

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: -217398864708275657}
   - component: {fileID: 3828102540333114284}
   - component: {fileID: 1552093537499487498}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: MagicWand_SpriteInHand
   m_TagString: Weapon
   m_Icon: {fileID: 0}

@@ -5,7 +5,7 @@ public class Weapon : MonoBehaviour
 {
     [SerializeField] protected WeaponConfig weaponConfig;
     [SerializeField] protected int damage;
-    [SerializeField] protected float attackRate;
+    [SerializeField] public float attackRate;
 
     [Header("Only for range weapons")]
     [SerializeField] protected float range;
@@ -16,11 +16,12 @@ public class Weapon : MonoBehaviour
     {
 
     }
-    protected virtual void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.TryGetComponent(out HealthSystem healthSystem))
         {
             healthSystem.TakeDamage(damage);
         }
     }
+    
 }

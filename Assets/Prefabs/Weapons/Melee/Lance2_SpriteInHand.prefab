@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6466730273890817239}
   - component: {fileID: 3893144974533932665}
   - component: {fileID: 4403411747155925526}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Lance2_SpriteInHand
   m_TagString: Weapon
   m_Icon: {fileID: 0}

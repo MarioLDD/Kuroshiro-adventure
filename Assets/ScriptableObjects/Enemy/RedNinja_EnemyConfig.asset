@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: RedNinja_EnemyConfig
   m_EditorClassIdentifier: 
   enemyName: 
-  health: 50
+  health: 10
   points: 5
   speed: 1
   weapon: {fileID: 0}
-  distanceDetection: 4
-  distanceStop: 1.5
-  distanceAttack: 2.5
+  distanceDetection: 10
+  distanceStop: 6
+  distanceAttack: 9

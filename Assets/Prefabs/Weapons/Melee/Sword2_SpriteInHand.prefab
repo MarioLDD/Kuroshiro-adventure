@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6587932563756193690}
   - component: {fileID: 8816152311265108902}
   - component: {fileID: 4232533415463409011}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sword2_SpriteInHand
   m_TagString: Weapon
   m_Icon: {fileID: 0}

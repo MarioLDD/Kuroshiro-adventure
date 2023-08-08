@@ -1,21 +1,44 @@
 ﻿using System.Collections;
 using UnityEngine;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
-namespace Assets.Scripts
+public class GameManager : MonoBehaviour
 {
-    public class GameManager : MonoBehaviour
+    private bool isPaused = false;
+    [SerializeField] private GameObject pause_Panel;
+    [SerializeField] private GameObject nextLevel;
+    [SerializeField] private GameObject victory_Panel;
+    [SerializeField] private GameObject gameOver_Panel;
+    void Start()
     {
+        pause_Panel.SetActive(false);
+        nextLevel.SetActive(false);
+        victory_Panel.SetActive(false);
+        gameOver_Panel.SetActive(false);
+    }
 
-        // Use this for initialization
-        void Start()
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-
+            isPaused = !isPaused;
+            PauseGame();
         }
+    }
 
-        // Update is called once per frame
-        void Update()
+    private void PauseGame()
+    {
+        if (isPaused)
         {
-
+            Time.timeScale = 0;
+            Cursor.lockState = CursorLockMode.Confined;
+            pause_Panel.SetActive(true);
+        }
+        else
+        {
+            Time.timeScale = 1;
+            Cursor.lockState = CursorLockMode.Locked;
+            pause_Panel.SetActive(false);
         }
     }
 }

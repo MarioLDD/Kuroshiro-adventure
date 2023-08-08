@@ -8,23 +8,25 @@ public class PlayerController : MonoBehaviour
     private Animator playerAnim;
     private Vector2 movement;
     private HealthSystem healthSystem;
+    private bool isAttacking = false;
     [SerializeField] private int health;
     [SerializeField] private float speed = 5;
 
     [Header("Current weapon")]
     [SerializeField] private Weapon weapon;
+    private float lastShotTime;
 
-    [Header("Hand setting")]
-    [SerializeField] private Transform hand;
-    [SerializeField] private float offSetAttack;
-    [SerializeField] private Vector2 handPositionFront;
-    [SerializeField] private Vector2 handPositionFrontL;
-    [SerializeField] private Vector2 handPositionLeft;
-    [SerializeField] private Vector2 handPositionBackL;
-    [SerializeField] private Vector2 handPositionBack;
-    [SerializeField] private Vector2 handPositionBackR;
-    [SerializeField] private Vector2 handPositionRight;
-    [SerializeField] private Vector2 handPositionFrontR;
+    //[Header("Hand setting")]
+    //[SerializeField] private Transform hand;
+    [SerializeField] private float offSetAttack;//si no lo uso borrar
+    //[SerializeField] private Vector2 handPositionFront;
+    //[SerializeField] private Vector2 handPositionFrontL;
+    //[SerializeField] private Vector2 handPositionLeft;
+    //[SerializeField] private Vector2 handPositionBackL;
+    //[SerializeField] private Vector2 handPositionBack;
+    //[SerializeField] private Vector2 handPositionBackR;
+    //[SerializeField] private Vector2 handPositionRight;
+    //[SerializeField] private Vector2 handPositionFrontR;
 
     [Header("Interaction")]
     [SerializeField] private float radiointeraccion;
@@ -38,7 +40,7 @@ public class PlayerController : MonoBehaviour
     }
 
     void Start()
-    {        
+    {
         UpdateWeapon();
     }
 
@@ -46,7 +48,7 @@ public class PlayerController : MonoBehaviour
     {
         InputTeclado();
 
-        Movement();        
+        Movement();
     }
 
     private void InputTeclado()
@@ -76,54 +78,7 @@ public class PlayerController : MonoBehaviour
         {
             playerAnim.SetFloat("LastMovimientoX", movement.x);
             playerAnim.SetFloat("LastMovimientoY", movement.y);
-        }
-
-        if (movement.y < 0)
-        {
-            if (movement.x > 0) //Front-Right Position
-            {
-                hand.localPosition = handPositionFrontR;
-                hand.rotation = Quaternion.Euler(0, 0, 225);
-            }
-            else if (movement.x < 0) //Front-Left Position
-            {
-                hand.localPosition = handPositionFrontL;
-                hand.rotation = Quaternion.Euler(0, 0, 135);
-            }
-            else //Front Position
-            {
-                hand.localPosition = handPositionFront;
-                hand.rotation = Quaternion.Euler(0, 0, 180);
-            }
-        }
-        else if (movement.y > 0)
-        {
-            if (movement.x > 0) //Back-Right Position
-            {
-                hand.localPosition = handPositionBackR;
-                hand.rotation = Quaternion.Euler(0, 0, 315);
-            }
-            else if (movement.x < 0) //Back-Left Position
-            {
-                hand.localPosition = handPositionBackL;
-                hand.rotation = Quaternion.Euler(0, 0, 45);
-            }
-            else //Back Position
-            {
-                hand.localPosition = handPositionBack;
-                hand.rotation = Quaternion.Euler(0, 0, 0);
-            }
-        }
-        else if (movement.x > 0) //Right Position
-        {
-            hand.localPosition = handPositionRight;
-            hand.rotation = Quaternion.Euler(0, 0, 270);
-        }
-        else if (movement.x < 0) //Left Position
-        {
-            hand.localPosition = handPositionLeft;
-            hand.rotation = Quaternion.Euler(0, 0, 90);
-        }
+        }        
     }
 
     private void FixedUpdate()
@@ -133,15 +88,25 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator Attack()
     {
-        playerAnim.SetTrigger("Attack");
-        if (weapon != null)
+        if (!isAttacking)
         {
-            weapon.gameObject.SetActive(true);
-            weapon.Attack();
-            //weapon.transform.localPosition = Vector2.up * offSetAttack;
-            yield return new WaitForSeconds(0.15f);
-            //weapon.transform.localPosition = Vector2.zero;
-            weapon.gameObject.SetActive(false);
+            isAttacking = true;
+            float attackRate = weapon.attackRate;
+            if (Time.time >= lastShotTime + attackRate)
+            {
+                playerAnim.SetTrigger("Attack");
+                if (weapon != null)
+                {
+                    weapon.gameObject.SetActive(true);
+                    weapon.Attack();
+                    //weapon.transform.localPosition = Vector2.up * offSetAttack;
+                    yield return new WaitForSeconds(0.15f);
+                    //weapon.transform.localPosition = Vector2.zero;
+                    weapon.gameObject.SetActive(false);
+                }
+                lastShotTime = Time.time;
+            }
+            isAttacking = false;
         }
     }
 
@@ -169,4 +134,3 @@ public class PlayerController : MonoBehaviour
         }
     }
 }
-

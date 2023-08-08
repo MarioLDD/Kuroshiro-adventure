@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: -4735634535608350439}
   - component: {fileID: 7622870973311781009}
   - component: {fileID: 5239664062757481980}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Katana_SpriteInHand
   m_TagString: Weapon
   m_Icon: {fileID: 0}

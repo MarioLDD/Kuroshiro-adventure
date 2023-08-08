@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8916130045024097030}
   - component: {fileID: 2599878670461454320}
   - component: {fileID: 3462019728638983742}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Bone_SpriteInHand
   m_TagString: Weapon
   m_Icon: {fileID: 0}

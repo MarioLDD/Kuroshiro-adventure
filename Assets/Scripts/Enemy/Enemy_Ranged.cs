@@ -10,6 +10,10 @@ public class Enemy_Ranged : Enemy
         enemyAnim = GetComponentInChildren<Animator>();
         healthSystem = GetComponent<HealthSystem>();
         healthSystem.MaxHealth = enemyConfig.Health;
+
+        //weapon_GO = enemyConfig.Weapon;
+        weapon = weapon_GO.GetComponent<Weapon>();
+
     }
     void Start()
     {
@@ -19,16 +23,19 @@ public class Enemy_Ranged : Enemy
         distanceStop = enemyConfig.DistanceStop;
         distanceAttack = enemyConfig.DistanceAttack;
     }
-
-    // Update is called once per frame
     void Update()
     {
         Move();
+        if (distanceToPlayer < distanceAttack)
+        {
+            //Pasar a aca la restriccion de tiempo para los ataques
+            StartCoroutine(Attack());
+        }
     }
-    protected override void Attack()
+    protected override IEnumerator Attack()
     {
-        base.Attack();
-        //Instancio proyectil, le doy impulso y le paso el daño que va a generar y el tarjet
+        StartCoroutine(base.Attack());
+        yield return null;
     }
     public override void Dead()
     {

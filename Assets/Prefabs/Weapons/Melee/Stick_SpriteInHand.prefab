@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6050114808914139846}
   - component: {fileID: 907700799480411751}
   - component: {fileID: 2376265296952718518}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Stick_SpriteInHand
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5171e7931615ddb49a9c28e88dba9b70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponConfig: {fileID: 0}
+  weaponConfig: {fileID: 11400000, guid: e0117e73a47786045b18cb7df676ac96, type: 2}
   damage: 0
   attackRate: 0
   range: 0

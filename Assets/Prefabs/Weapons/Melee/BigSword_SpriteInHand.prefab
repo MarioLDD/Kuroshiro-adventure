@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: -2372553947923827656}
   - component: {fileID: 2228039224249808979}
   - component: {fileID: 1470093461915217262}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BigSword_SpriteInHand
   m_TagString: Weapon
   m_Icon: {fileID: 0}

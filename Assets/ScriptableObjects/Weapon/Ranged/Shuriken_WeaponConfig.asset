@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Shuriken_WeaponConfig
   m_EditorClassIdentifier: 
   damage: 5
-  attackRate: 0
-  range: 5
+  attackRate: 5
+  range: 6
   startAmmo: 0
   proyectileForce: 15
   proyectile: {fileID: -6517652696395973780, guid: 980d3f0a0e3f3134b9eb849e83b8761c, type: 3}
