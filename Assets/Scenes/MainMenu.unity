@@ -268,7 +268,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cc0e38e851b38e84e971129993b85dee, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0e1208455fb200349b9fa7a20820c7a0, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1059,6 +1059,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc6adfe511c163043b3b593b758be1aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pause_Panel: {fileID: 0}
+  nextLevel: {fileID: 0}
 --- !u!114 &1709208471
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -12,8 +12,10 @@ public class Enemy_Melee : Enemy
         healthSystem.MaxHealth = enemyConfig.Health;
 
         //weapon_GO = enemyConfig.Weapon;
-        weapon = weapon_GO.GetComponent<Weapon>();
-
+        if (weapon_GO != null)
+        {
+            weapon = weapon_GO.GetComponent<Weapon>();
+        }
     }
     private void Start()
     {
@@ -37,6 +39,9 @@ public class Enemy_Melee : Enemy
 
     protected override IEnumerator Attack()
     {
+        if(weapon == null)
+            yield break;
+
         Debug.Log("enemigo ataca");
 
         StartCoroutine(base.Attack());

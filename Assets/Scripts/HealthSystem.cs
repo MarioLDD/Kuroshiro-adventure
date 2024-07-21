@@ -5,11 +5,10 @@ using UnityEngine.Events;
 
 public class HealthSystem : MonoBehaviour
 {
-    [SerializeField] private int maxHealth;
+    [ReadOnly][SerializeField] private int maxHealth;
     [SerializeField] private int currentHealth;
     [SerializeField] private UnityEvent onHealthZero;
     private IHealthBar iHealthBar;
-
     public int MaxHealth { get { return maxHealth; } set { maxHealth = value; } }
     public int CurrentHealth { get { return currentHealth; } set { currentHealth = value; } }
 

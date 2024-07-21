@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cef4a908bdef05b45867bab9ef85d793, type: 3}
+  m_Name: Readme
+  m_EditorClassIdentifier: 
+  icon: {fileID: 2800000, guid: 7e15d312343cd744d8b36c4bff621bb0, type: 3}
+  title: To do
+  fileName: Readme
+  prevReadme: {fileID: 0}
+  nextReadme: {fileID: 0}
+  sections:
+  - name: Header -Pause System
+    heading: Pause System
+    text: 
+    linkText: 
+    url: 
+    isDone: 0
+  - name: Header -NPC Anima...
+    heading: NPC Animation for dialog
+    text: 
+    linkText: 
+    url: 
+    isDone: 0
+  - name: Header -Info sign...
+    heading: Info sign animation
+    text: 
+    linkText: 
+    url: 
+    isDone: 0
+  - name: Header -Deactivat...
+    heading: Deactivate the attack next to an NPC
+    text: 
+    linkText: 
+    url: 
+    isDone: 0
+  - name: Header -Healing p...
+    heading: Healing potion and max health increment
+    text: 
+    linkText: 
+    url: 
+    isDone: 0
+  - name: Header -Shuriken ...
+    heading: Shuriken shot
+    text: 
+    linkText: 
+    url: 
+    isDone: 0
+  - name: Header -Boss move...
+    heading: Boss movement and attack
+    text: 
+    linkText: 
+    url: 
+    isDone: 0
+  - name: Header -Pass weap...
+    heading: Pass weapons through scenes
+    text: 
+    linkText: 
+    url: 
+    isDone: 0
+  - name: Header -Save and ...
+    heading: Save and load gamesave in serialize file converted in binary
+    text: 
+    linkText: 
+    url: 
+    isDone: 0
+  - name: Header -Shuriken,...
+    heading: Shuriken, health and coins loot
+    text: 
+    linkText: 
+    url: 
+    isDone: 0
+  - name: Header -XP system
+    heading: XP system
+    text: 
+    linkText: 
+    url: 
+    isDone: 0
+  isRoot: 1
