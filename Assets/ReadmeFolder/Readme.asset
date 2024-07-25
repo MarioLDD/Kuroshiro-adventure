@@ -18,15 +18,23 @@ MonoBehaviour:
   prevReadme: {fileID: 0}
   nextReadme: {fileID: 0}
   sections:
+  - name: Header -modificar...
+    heading: modificar el Readme
+    text: cambiar el boton de generate new por uno de generate next, para que al
+      presionar genere el siguiente, pero que solo lo ponga como root si todo en
+      el root esta hecho.
+    linkText: 
+    url: 
+    isDone: 0
   - name: Header -Pause System
     heading: Pause System
     text: 
     linkText: 
     url: 
-    isDone: 0
+    isDone: 1
   - name: Header -NPC Anima...
     heading: NPC Animation for dialog
-    text: 
+    text: Hacer que la caja de texto del dialogo suba y baje por animacion
     linkText: 
     url: 
     isDone: 0
@@ -35,19 +43,19 @@ MonoBehaviour:
     text: 
     linkText: 
     url: 
-    isDone: 0
+    isDone: 1
   - name: Header -Deactivat...
     heading: Deactivate the attack next to an NPC
     text: 
     linkText: 
     url: 
-    isDone: 0
+    isDone: 1
   - name: Header -Healing p...
     heading: Healing potion and max health increment
     text: 
     linkText: 
     url: 
-    isDone: 0
+    isDone: 1
   - name: Header -Shuriken ...
     heading: Shuriken shot
     text: 
@@ -81,6 +89,15 @@ MonoBehaviour:
   - name: Header -XP system
     heading: XP system
     text: 
+    linkText: 
+    url: 
+    isDone: 0
+  - name: Header -Refactori...
+    heading: Refactorizar codigo de items
+    text: hacer que todos funciones con el mismo script, una idea es que tenga un
+      enum donde se elige que va a ser el item, coin, healthPotion, HeartIncrement.
+      y segun lo elegido muestre el icono correspondiente. y te de a configurar lo
+      que necesite dicho item.
     linkText: 
     url: 
     isDone: 0

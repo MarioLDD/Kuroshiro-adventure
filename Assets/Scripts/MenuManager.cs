@@ -5,9 +5,22 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
+    public static MenuManager Instance { get; private set; }
+
     [SerializeField] private GameObject pause_Panel;
     [SerializeField] private NextLevel nextLevel;
-
+    public bool IsPause;
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
     public void StartGame()
     {
         SceneManager.LoadScene("Level1");
@@ -18,11 +31,35 @@ public class MenuManager : MonoBehaviour
         //    nextLevel = nextLevel_Go.GetComponent<NextLevel>();
         //}
     }
-    public void ResumeGame()
+    private void Update()
     {
-        Time.timeScale = 1;
-        Cursor.lockState = CursorLockMode.Locked;
-        pause_Panel.SetActive(false);
+
+        if (!(SceneManager.GetActiveScene().name == "MainMenu"))
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                PauseGame();
+            }
+
+
+        }
+    }
+    public void PauseGame()
+    {
+        IsPause = !IsPause;
+
+        if (IsPause)
+        {
+            Time.timeScale = 0f;
+            Cursor.lockState = CursorLockMode.Confined;
+            pause_Panel.SetActive(true);
+        }
+        else
+        {
+            Time.timeScale = 1;
+            Cursor.lockState = CursorLockMode.Locked;
+            pause_Panel.SetActive(false);
+        }
     }
 
     public void MainMenu()

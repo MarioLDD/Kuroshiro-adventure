@@ -215,7 +215,23 @@ namespace ReadmeSystem.Editor
                     GUILayout.Label(section.heading, ReadmeEditorStyles.HeadingStyle);
 
                     // Agregar el checkbox
+                    EditorGUI.BeginChangeCheck();
                     section.isDone = GUILayout.Toggle(section.isDone, "Done");
+                    if (EditorGUI.EndChangeCheck())
+                    {
+                        if (section.isDone)
+                        {
+                            Debug.Log($"Section: {section.heading} Is Done");
+                            section.isDone = true;
+                            EditorUtility.SetDirty(readme);
+                        }
+                        else
+                        {
+                            Debug.Log($"Section: {section.heading} Is Undone");
+                            section.isDone = false;
+                            EditorUtility.SetDirty(readme);
+                        }
+                    }
 
                     GUILayout.EndHorizontal();
                     if (!section.isDone)

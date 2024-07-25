@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 movement;
     private HealthSystem healthSystem;
     private bool isAttacking = false;
+    private bool canAttack = true;
     [SerializeField] private int health;
     [SerializeField] private float speed = 5;
 
@@ -57,7 +58,7 @@ public class PlayerController : MonoBehaviour
         movement.y = Input.GetAxisRaw("Vertical");
         movement = movement.normalized;
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && canAttack)
         {
             StartCoroutine(Attack());
         }
@@ -78,7 +79,7 @@ public class PlayerController : MonoBehaviour
         {
             playerAnim.SetFloat("LastMovimientoX", movement.x);
             playerAnim.SetFloat("LastMovimientoY", movement.y);
-        }        
+        }
     }
 
     private void FixedUpdate()
@@ -116,7 +117,32 @@ public class PlayerController : MonoBehaviour
         if (collider != null)
         {
             collider.gameObject.GetComponent<Iinteractuable>().Interaction();//completar con la accion
+            if (collider.gameObject.tag == "CanNotAttack")
+            {
+                Debug.Log("NO puede atacar");
+                canAttack = false;
+            }
         }
+        else
+        {
+            Debug.Log("puede atacar");
+
+            canAttack = true;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "CanNotAttack")
+        {
+            Debug.Log("NO puede atacar");
+            canAttack = false;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        Debug.Log("puede atacar");
+        canAttack = true;
     }
 
     private void OnDrawGizmosSelected()

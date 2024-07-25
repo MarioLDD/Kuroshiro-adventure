@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -33,6 +34,44 @@ public class HealthSystem : MonoBehaviour
         if (currentHealth < 1)
         {
             onHealthZero.Invoke();
+        }
+    }
+
+    public void TakeHealth(int health)
+    {
+
+        if ((currentHealth + health) <= maxHealth)
+        {
+            currentHealth += health;
+
+        }
+        else
+        {
+            currentHealth = maxHealth;
+        }
+
+        if (iHealthBar != null)
+        {
+            iHealthBar.UpdateHealthBar(maxHealth, currentHealth);
+        }        
+    }
+    public void TakeHealth(int health,int healthIncrement)
+    {
+        maxHealth += healthIncrement;
+
+        if ((currentHealth + health) <= maxHealth)
+        {
+            currentHealth += health;
+
+        }
+        else
+        {
+            currentHealth = maxHealth;
+        }
+
+        if (iHealthBar != null)
+        {
+            iHealthBar.UpdateHealthBar(maxHealth, currentHealth);
         }
     }
 }
