@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Skeleton_EnemyConfig
   m_EditorClassIdentifier: 
   enemyName: Skeleton
-  health: 5
+  health: 1
   points: 5
   speed: 1
   weapon: {fileID: 0}
   distanceDetection: 5
   distanceStop: 1
-  distanceAttack: 1.1
+  distanceAttack: 1.5

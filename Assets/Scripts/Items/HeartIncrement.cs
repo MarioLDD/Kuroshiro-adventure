@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class HeartIncrement : MonoBehaviour
 {
-    //public static event Action<int> OnHeartIncrementEvent;
     [SerializeField] private int healthIncrement = 1;
     [SerializeField] private int health = 1;
 
@@ -14,9 +13,8 @@ public class HeartIncrement : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<HealthSystem>().TakeHealth(health, healthIncrement);
+            collision.gameObject.GetComponent<HealthSystem_Player>().TakeHealth(health, healthIncrement);
 
-            //OnHeartIncrementEvent?.Invoke(value);
             Destroy(gameObject);
         }
     }

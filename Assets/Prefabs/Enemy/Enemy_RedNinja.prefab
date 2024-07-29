@@ -10,13 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 9040394595494368356}
   - component: {fileID: 9040394595494368359}
-  - component: {fileID: 9040394595494368357}
+  - component: {fileID: -5661752454607183620}
   - component: {fileID: 9040394595494368378}
   - component: {fileID: 9040394595494368376}
   - component: {fileID: 9040394595494368379}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enemy_RedNinja
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -59,7 +59,7 @@ MonoBehaviour:
   distanceStop: 0
   distanceAttack: 0
   hand: {fileID: 9040394595856976408}
---- !u!114 &9040394595494368357
+--- !u!114 &-5661752454607183620
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -68,7 +68,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9040394595494368358}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7672b5f6d5badc843841ab02c0d6d327, type: 3}
+  m_Script: {fileID: 11500000, guid: 755402e57ad204e418abc85f82ce90ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 0
@@ -211,7 +211,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9040394595856976411}
   m_LocalRotation: {x: -0, y: -0, z: 1, w: 0}
-  m_LocalPosition: {x: -0.125, y: -0.634, z: 0}
+  m_LocalPosition: {x: 0, y: -0.313, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

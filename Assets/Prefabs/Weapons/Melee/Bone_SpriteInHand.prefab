@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8916130045024097030}
   - component: {fileID: 2599878670461454320}
   - component: {fileID: 3462019728638983742}
+  - component: {fileID: 5266762413383704024}
   m_Layer: 3
   m_Name: Bone_SpriteInHand
   m_TagString: Weapon
@@ -46,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5171e7931615ddb49a9c28e88dba9b70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponConfig: {fileID: 11400000, guid: e1d16471838c12c458451b43fd0cdbf6, type: 2}
+  weaponConfig: {fileID: 11400000, guid: e0117e73a47786045b18cb7df676ac96, type: 2}
   damage: 0
   attackRate: 0
   range: 0
@@ -131,3 +132,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.4375, y: 0.2503156}
   m_EdgeRadius: 0
+--- !u!95 &5266762413383704024
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4372880044678278997}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 026ba1253a7171542a37e159fecdf8e1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

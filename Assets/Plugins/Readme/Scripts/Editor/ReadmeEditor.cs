@@ -113,6 +113,8 @@ namespace ReadmeSystem.Editor
                 base.OnInspectorGUI();
 
                 EditorGUILayout.BeginVertical(EditorStyles.helpBox);
+                GUILayout.BeginHorizontal();
+                GUILayout.BeginVertical();
                 showInEditMode = EditorGUILayout.Toggle("Show in Edit Mode", showInEditMode);
 
                 EditorGUI.BeginChangeCheck();
@@ -127,7 +129,14 @@ namespace ReadmeSystem.Editor
                         readme.isRoot = true;
                     }
                 }
+                GUILayout.EndVertical();
 
+                if (GUILayout.Button("Clean Seaction", GUILayout.MaxHeight(40)))
+                {
+                    CleanSection(readme);
+                }
+
+                GUILayout.EndHorizontal();
                 if (GUILayout.Button("Update Sections Label"))
                 {
                     ResetSectionsLabel(readme);
@@ -146,10 +155,10 @@ namespace ReadmeSystem.Editor
             GUILayout.BeginHorizontal();
 
             showInEditMode = EditorGUILayout.Toggle("Show in Edit Mode", showInEditMode);
-            GUI.enabled = IsDoneChecker(readme);
-            if (GUILayout.Button("Generate new", EditorStyles.toolbarButton))
+            bool root = IsDoneChecker(readme);
+            if (GUILayout.Button("Generate next", EditorStyles.toolbarButton))
             {
-                NewRootReadme(readme);
+                NewRootReadme(readme, root);
             }
             GUILayout.EndHorizontal();
             EditorGUILayout.EndHorizontal();
@@ -209,7 +218,7 @@ namespace ReadmeSystem.Editor
             {
                 if (!string.IsNullOrEmpty(section.heading))
                 {
-                    section.name = "Header -" + section.heading;
+                    section.name =section.heading;
 
                     GUILayout.BeginHorizontal();
                     GUILayout.Label(section.heading, ReadmeEditorStyles.HeadingStyle);
@@ -265,11 +274,11 @@ namespace ReadmeSystem.Editor
                     GUILayout.Space(kSpace);
                 }
                 GUILayout.Space(kSpace);
-                if (section.name.Length > 20)
-                {
-                    section.name = section.name.Remove(17);
-                    section.name += "...";
-                }
+                //if (section.name.Length > 20)
+                //{
+                //    section.name = section.name.Remove(17);
+                //    section.name += "...";
+                //}
 
             }
         }
@@ -286,7 +295,7 @@ namespace ReadmeSystem.Editor
 
                 if (!string.IsNullOrEmpty(section.heading))
                 {
-                    section.name = "Header -" + section.heading;
+                    section.name =section.heading;
 
                 }
                 if (!string.IsNullOrEmpty(section.text))
@@ -304,11 +313,11 @@ namespace ReadmeSystem.Editor
 
                 }
 
-                if (section.name.Length > 20)
-                {
-                    section.name = section.name.Remove(17);
-                    section.name += "...";
-                }
+                //if (section.name.Length > 20)
+                //{
+                //    section.name = section.name.Remove(17);
+                //    section.name += "...";
+                //}
 
             }
 
@@ -366,11 +375,22 @@ namespace ReadmeSystem.Editor
             return true;
         }
 
-        public static void NewRootReadme(Readme readme)
+        public static void CleanSection(Readme readme)
+        {
+            if (readme == null || readme.sections == null)
+                return;
+
+            // Utilizar LINQ para filtrar las secciones que no están "done"
+            readme.sections = readme.sections.Where(section => !section.isDone).ToArray();
+
+            // Marcar el objeto como sucio para que Unity sepa que necesita ser guardado
+            EditorUtility.SetDirty(readme);
+        }
+
+        public static void NewRootReadme(Readme readme, bool root)
         {
             string name = NameFormat(readme.name);
 
-            readme.isRoot = false;
             string path = $"Assets/ReadmeFolder/{name}";
             if (!Directory.Exists("Assets/ReadmeFolder"))
             {
@@ -380,7 +400,11 @@ namespace ReadmeSystem.Editor
             Readme settings = ScriptableObject.CreateInstance<Readme>();
             settings.prevReadme = readme;
             readme.nextReadme = settings;
-            settings.isRoot = true;
+            if (root)
+            {
+                readme.isRoot = false;
+                settings.isRoot = true;
+            }
 
             //int idNumber = int.Parse(readme.id);
             //idNumber++;

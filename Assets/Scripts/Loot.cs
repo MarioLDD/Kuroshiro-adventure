@@ -6,7 +6,7 @@ public class Loot : MonoBehaviour, Iinteractuable
 {
     private GameObject player;
     [SerializeField] private GameObject weaponPrefab;
-    [SerializeField] private GameObject weapon;
+    [@ReadOnly][SerializeField] private GameObject weapon;
     private SpriteRenderer weaponRenderer;
     private PlayerController playerController;
 

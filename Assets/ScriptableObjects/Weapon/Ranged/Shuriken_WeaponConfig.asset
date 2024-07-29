@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Shuriken_WeaponConfig
   m_EditorClassIdentifier: 
   damage: 5
-  attackRate: 5
+  attackRate: 3
   range: 6
   startAmmo: 0
   proyectileForce: 15

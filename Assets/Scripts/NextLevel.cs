@@ -16,7 +16,7 @@ public class NextLevel : MonoBehaviour
     void Start()
     {
         totalScenes = SceneManager.sceneCountInBuildSettings;
-        Debug.Log("total escenas " + totalScenes);
+        //Debug.Log("total escenas " + totalScenes);
         actualScene = SceneManager.GetActiveScene().buildIndex;
     }
 

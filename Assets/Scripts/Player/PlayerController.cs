@@ -1,9 +1,11 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(HealthSystem))]
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController Instance { get; private set; }
     private Rigidbody2D playerRb;
     private Animator playerAnim;
     private Vector2 movement;
@@ -12,6 +14,9 @@ public class PlayerController : MonoBehaviour
     private bool canAttack = true;
     [SerializeField] private int health;
     [SerializeField] private float speed = 5;
+    [SerializeField] private float sprintSpeed = 8;
+    [ReadOnly][SerializeField] private float actualSpeed;
+
 
     [Header("Current weapon")]
     [SerializeField] private Weapon weapon;
@@ -34,6 +39,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask interactuableLayer;
     private void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        //DontDestroyOnLoad(gameObject);
         playerRb = GetComponent<Rigidbody2D>();
         playerAnim = GetComponent<Animator>();
         healthSystem = GetComponent<HealthSystem>();
@@ -43,6 +58,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         UpdateWeapon();
+        actualSpeed = speed;
     }
 
     void Update()
@@ -67,6 +83,15 @@ public class PlayerController : MonoBehaviour
         {
             Interactuar();
         }
+
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            actualSpeed = sprintSpeed;
+        }
+        else
+        {
+            actualSpeed = speed;
+        }
     }
 
     private void Movement()
@@ -84,7 +109,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        playerRb.MovePosition(playerRb.position + movement * speed * Time.fixedDeltaTime);
+        playerRb.MovePosition(playerRb.position + movement * actualSpeed * Time.fixedDeltaTime);
     }
 
     private IEnumerator Attack()
@@ -135,13 +160,11 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.tag == "CanNotAttack")
         {
-            Debug.Log("NO puede atacar");
             canAttack = false;
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Debug.Log("puede atacar");
         canAttack = true;
     }
 

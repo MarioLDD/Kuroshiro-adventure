@@ -41,4 +41,19 @@ public class GameManager : MonoBehaviour
             pause_Panel.SetActive(false);
         }
     }
+    public void OnGameOver()
+    {
+        gameOver_Panel.SetActive(true);
+        Time.timeScale = 0;
+    }
+    private void OnEnable()
+    {
+        HealthSystem_Player.OnPlayerHealthZero += OnGameOver;
+    }
+
+    private void OnDisable()
+    {
+        HealthSystem_Player.OnPlayerHealthZero -= OnGameOver;
+    }
+
 }

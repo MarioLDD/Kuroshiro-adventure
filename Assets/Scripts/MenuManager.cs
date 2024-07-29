@@ -64,6 +64,7 @@ public class MenuManager : MonoBehaviour
 
     public void MainMenu()
     {
+        Destroy(PlayerController.Instance.gameObject);
         Time.timeScale = 1;
         SceneManager.LoadScene("MainMenu");
     }

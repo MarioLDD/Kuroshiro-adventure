@@ -12,7 +12,7 @@ public class HealthPotion : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<HealthSystem>().TakeHealth(health);
+            collision.gameObject.GetComponent<HealthSystem_Player>().TakeHealth(health);
             //OnHealthPotionEvent?.Invoke(value);
             Destroy(gameObject);
         }

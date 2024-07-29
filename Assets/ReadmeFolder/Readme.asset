@@ -16,88 +16,90 @@ MonoBehaviour:
   title: To do
   fileName: Readme
   prevReadme: {fileID: 0}
-  nextReadme: {fileID: 0}
+  nextReadme: {fileID: 11400000, guid: a73fbe3f721df4c48ac9e8bc3409e7b7, type: 2}
   sections:
-  - name: Header -modificar...
-    heading: modificar el Readme
-    text: cambiar el boton de generate new por uno de generate next, para que al
-      presionar genere el siguiente, pero que solo lo ponga como root si todo en
-      el root esta hecho.
+  - name: Agragar instrucciones para botones
+    heading: Agragar instrucciones para botones
+    text: Una posibilidad es hacerlo por medio de carteles, recordandole haciendo
+      referencia a que tiene que recordar su entrenamiento
     linkText: 
     url: 
     isDone: 0
-  - name: Header -Pause System
-    heading: Pause System
+  - name: Agragar efectos de sonido
+    heading: Agragar efectos de sonido
     text: 
     linkText: 
     url: 
-    isDone: 1
-  - name: Header -NPC Anima...
+    isDone: 0
+  - name: Modificar el Readme
+    heading: Modificar el Readme
+    text: '*Cuando no haya un Readme cargado en Next, cambiar por el boton de Generate
+      Next.
+
+
+      *ver si es posible desplegar una ventana que pida confirmacion
+      de la limpieza'
+    linkText: 
+    url: 
+    isDone: 0
+  - name: NPC Animation for dialog
     heading: NPC Animation for dialog
     text: Hacer que la caja de texto del dialogo suba y baje por animacion
     linkText: 
     url: 
     isDone: 0
-  - name: Header -Info sign...
-    heading: Info sign animation
-    text: 
-    linkText: 
-    url: 
-    isDone: 1
-  - name: Header -Deactivat...
-    heading: Deactivate the attack next to an NPC
-    text: 
-    linkText: 
-    url: 
-    isDone: 1
-  - name: Header -Healing p...
-    heading: Healing potion and max health increment
-    text: 
-    linkText: 
-    url: 
-    isDone: 1
-  - name: Header -Shuriken ...
+  - name: Shuriken shot
     heading: Shuriken shot
     text: 
     linkText: 
     url: 
     isDone: 0
-  - name: Header -Boss move...
+  - name: Boss movement and attack
     heading: Boss movement and attack
     text: 
     linkText: 
     url: 
     isDone: 0
-  - name: Header -Pass weap...
+  - name: Pass weapons through scenes
     heading: Pass weapons through scenes
     text: 
     linkText: 
     url: 
     isDone: 0
-  - name: Header -Save and ...
+  - name: Save and load gamesave in serialize file converted in binary
     heading: Save and load gamesave in serialize file converted in binary
     text: 
     linkText: 
     url: 
     isDone: 0
-  - name: Header -Shuriken,...
+  - name: Shuriken, health and coins loot
     heading: Shuriken, health and coins loot
     text: 
     linkText: 
     url: 
     isDone: 0
-  - name: Header -XP system
-    heading: XP system
+  - name: Refactorizar armas y enemigos
+    heading: Refactorizar armas y enemigos
+    text: 'me tengo que deshacer de tanto scriptable object.
+
+
+      la configuracion
+      de los enemigos la puedo cargar directamente en los prefabs
+
+      y el arma
+      pasarsela por medio del prefab corespondiente y que se instancie en la mano'
+    linkText: 
+    url: 
+    isDone: 0
+  - name: Armar un pool object para los arrojadizos
+    heading: Armar un pool object para los arrojadizos
     text: 
     linkText: 
     url: 
     isDone: 0
-  - name: Header -Refactori...
-    heading: Refactorizar codigo de items
-    text: hacer que todos funciones con el mismo script, una idea es que tenga un
-      enum donde se elige que va a ser el item, coin, healthPotion, HeartIncrement.
-      y segun lo elegido muestre el icono correspondiente. y te de a configurar lo
-      que necesite dicho item.
+  - name: Efectos de particulas
+    heading: Efectos de particulas
+    text: 
     linkText: 
     url: 
     isDone: 0

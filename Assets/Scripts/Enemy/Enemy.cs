@@ -1,25 +1,26 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Collections;
 using UnityEngine;
 using UnityEngine.XR;
 
-[RequireComponent(typeof(HealthSystem))]
+[RequireComponent(typeof(HealthSystem_Enemy))]
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(BoxCollider2D))]
 public class Enemy : MonoBehaviour
 {
-    private float lastShotTime;
-    private bool isAttacking = false;
+    protected float lastShotTime;
+    protected bool isAttacking = false;
     protected GameObject player;
     protected Animator enemyAnim;
 
     [SerializeField] protected EnemyConfig enemyConfig;
     [SerializeField] protected GameObject weapon_GO;
-    [SerializeField] protected Weapon weapon;
+    [@ReadOnly][SerializeField] protected Weapon weapon;
     [SerializeField] protected float speed;
-    [SerializeField] protected int points;
+    [@ReadOnly][SerializeField] protected int points;
     [Tooltip("Green circle")]
     [SerializeField] protected float distanceDetection;
 
@@ -85,14 +86,12 @@ public class Enemy : MonoBehaviour
             if (Time.time >= lastShotTime + attackRate)
             {
                 enemyAnim.SetTrigger("Attack");
-                Debug.Log("enemigo padre ataca");
+                weapon_GO.SetActive(true);
 
-                weapon.gameObject.SetActive(true);
+                yield return new WaitForSeconds(.4f);
+
                 weapon.Attack();
-                //weapon.transform.localPosition = Vector2.up * offSetAttack;
-                yield return new WaitForSeconds(0.15f);
-                //weapon.transform.localPosition = Vector2.zero;
-                weapon.gameObject.SetActive(false);
+                weapon_GO.SetActive(false);
                 lastShotTime = Time.time;
             }
             isAttacking = false;

@@ -12,7 +12,11 @@ public class Enemy_Ranged : Enemy
         healthSystem.MaxHealth = enemyConfig.Health;
 
         //weapon_GO = enemyConfig.Weapon;
-        weapon = weapon_GO.GetComponent<Weapon>();
+        if (weapon_GO != null)
+        {
+            weapon = weapon_GO.GetComponent<Weapon>();
+            weapon_GO.SetActive(false);
+        }
 
     }
     void Start()
@@ -34,8 +38,24 @@ public class Enemy_Ranged : Enemy
     }
     protected override IEnumerator Attack()
     {
-        StartCoroutine(base.Attack());
+        if (!isAttacking)
+        {
+            isAttacking = true;
+            float attackRate = weapon.attackRate;
+            if (Time.time >= lastShotTime + attackRate)
+            {
+                weapon.gameObject.SetActive(true);
+
+                enemyAnim.SetTrigger("Attack");
+                weapon.Attack();
+                //yield return new WaitForSeconds(0.15f);
+                weapon.gameObject.SetActive(false);
+                lastShotTime = Time.time;
+            }
+            isAttacking = false;
+        }
         yield return null;
+
     }
     public override void Dead()
     {
